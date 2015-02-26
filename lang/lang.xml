@@ -258,7 +258,18 @@
 		<value xml:lang="jp"><![CDATA[結果]]></value>
 		<value xml:lang="zh-TW"><![CDATA[結果]]></value>
 	</item>
-
+	<item name="payment_method">
+		<value xml:lang="ko"><![CDATA[결제수단)]]></value>
+		<value xml:lang="en"><![CDATA[Payment method]]></value>
+		<value xml:lang="jp"><![CDATA[Payment method]]></value>
+		<value xml:lang="zh-TW"><![CDATA[付款]]></value>
+	</item>
+	<item name="cmd_place_order">
+		<value xml:lang="ko"><![CDATA[구매하기]]></value>
+		<value xml:lang="en"><![CDATA[Place an order]]></value>
+		<value xml:lang="jp"><![CDATA[Place an order]]></value>
+		<value xml:lang="zh-TW"><![CDATA[購買]]></value>
+	</item>
 	
 	<item name="about_epay">
 		<value xml:lang="ko"><![CDATA[결제 플러그인 관리 및 결제내역 조회가 가능합니다.]]></value>

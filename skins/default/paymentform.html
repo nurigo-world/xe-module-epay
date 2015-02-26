@@ -2,7 +2,7 @@
 <load target="css/btn.css" />
 <load target="../../tpl/js/common.js" />
 <div cond="count($payment_methods)" class="payment_wrapper">
-	<div class="payment_title">결제수단</div>
+	<div class="payment_title">付款</div>
 	<form id="epay_form" method="post" action="./">
 		<input type="hidden" name="act" value="" />
 		<input type="hidden" name="mid" value="{$mid}" />
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<div class="btn_wrap">
-			<button type="submit" class="btn nbtn"><block cond="$epay_module_info->button_text">{$epay_module_info->button_text}</block><block cond="!$epay_module_info->button_text">구매하기</block></button>
+			<button type="submit" class="btn nbtn"><block cond="$epay_module_info->button_text">{$epay_module_info->button_text}</block><block cond="!$epay_module_info->button_text">購買</block></button>
 		</div>
 	</form>
 </div>

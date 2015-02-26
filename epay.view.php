@@ -150,6 +150,8 @@ class epayView extends epay
 			}
 			$payment_methods = array();
 			if($module_info->m_pg1_module_srl) $payment_methods = array_merge($payment_methods, $oEpayModel->getPaymentMethods($module_info->m_pg1_module_srl));
+			if($module_info->m_pg2_module_srl) $payment_methods = array_merge($payment_methods, $oEpayModel->getPaymentMethods($module_info->m_pg2_module_srl));
+			if($module_info->m_pg3_module_srl) $payment_methods = array_merge($payment_methods, $oEpayModel->getPaymentMethods($module_info->m_pg3_module_srl));
 
 			Context::set('payment_methods', $payment_methods);
 		}

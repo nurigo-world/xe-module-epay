@@ -13,5 +13,6 @@
     <category>service</category>
 	<author email_address="contact@nurigo.net" link="http://www.nurigo.net">
         <name xml:lang="ko">NURIGO</name>
+		<name xml:lang="zh-TW">NURIGO</name>
     </author>
 </module>

@@ -27,8 +27,9 @@ class epayController extends epay
 		$review_args = Context::getRequestVars();
 		$review_args->transaction_srl = $transaction_srl;
 		$review_args->order_srl = $order_srl;
-		debugPrint('reviewOrder');
-		debugPrint($review_args);
+
+		// gerRequestVars에 plugin_srl 안넘어오는 불상사가 있음
+		if(!$review_args->plugin_srl) $review_args->plugin_srl = Context::get('plugin_srl');
 
 		if (!$review_args->module_srl) return new Object(-1, 'no module_srl');
 		if (!$review_args->epay_module_srl) return new Object(-1, 'no epay_module_srl');
@@ -44,7 +45,7 @@ class epayController extends epay
 		$args->transaction_srl = $review_args->transaction_srl;
 		$args->epay_module_srl = $review_args->epay_module_srl;
 		$args->module_srl = $review_args->module_srl;
-		$args->plugin_srl = 0;
+		$args->plugin_srl = $review_args->plugin_srl;
 		$args->order_srl = $review_args->order_srl;
 		$args->order_title = $review_args->item_name;
 		$args->payment_method = $review_args->payment_method;

@@ -6,7 +6,7 @@
         <column name="transaction_srl" var="transaction_srl" filter="number" notnull="notnull" />
         <column name="epay_module_srl" var="epay_module_srl" notnull="notnull" />
         <column name="module_srl" var="module_srl" />
-        <column name="plugin_srl" var="plugin_srl" notnull="notnull" />
+        <column name="plugin_srl" var="plugin_srl" />
         <column name="target_module" var="target_module" notnull="notnull" />
         <column name="order_srl" var="order_srl" notnull="notnull" />
         <column name="order_title" var="order_title" />
