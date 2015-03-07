@@ -707,6 +707,18 @@ class epayController extends epay
 			if(!$output->toBool()) return $output;
 		}
 	}
+
+	/**
+	 * @brief update extra vars
+	 */
+	function updateExtraVars($transaction_srl, $extra_vars)
+	{
+		$args->transaction_srl = $transaction_srl;
+		$args->extra_vars = $extra_vars;
+
+		$output = executeQuery('epay.updateTransaction', $args);
+		if(!$output->toBool()) return $output;
+	}
 }
 /* End of file epay.controller.php */
 /* Location: ./modules/epay/epay.controller.php */
