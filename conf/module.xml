@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <module>
 	<grants />
-	<permissions />
+        <permissions>
+                <permission action="dispEpayAdminTransactions" target="manager" />
+                <permission action="procEpayAdminUpdateState" target="manager" />
+        </permissions>
 	<actions>
 		<action name="dispEpayAdminEpayList" type="view" />
 		<action name="dispEpayAdminInsertEpay" type="view" />
@@ -11,12 +14,14 @@
 		<action name="dispEpayAdminTransactions" type="view" admin_index="true" />
 		<action name="dispEpayAdminSkinInfo" type="view" />
 		<action name="dispEpayAdminMobileSkinInfo" type="view" />
+		<action name="dispEpayAdminGrantInfo" type="view" />
 
 		<action name="procEpayAdminInsertEpay" type="controller" />
 		<action name="procEpayAdminInsertPlugin" type="controller" />
 		<action name="procEpayAdminUpdatePlugin" type="controller" />
 		<action name="procEpayAdminDeletePlugin" type="controller" />
 		<action name="procEpayAdminDeleteModInst" type="controller" />
+		<action name="procEpayAdminUpdateState" type="controller" ruleset="updateState" />
 
 		<action name="getEpayAdminDeletePlugin" type="model" />
 		<action name="getEpayAdminDeleteModInst" type="model" />
@@ -37,8 +42,6 @@
 		<action name="procEpayReport" type="controller" />
 		<action name="procEpayEscrowDelivery" type="controller" />
 		<action name="procEpayEscrowConfirm" type="controller" />
-		<action name="procEpayUpdateState" type="controller" />
-		
 
 		<action name="getEpayReceipt" type="model" />
 		<action name="getEpaySalesData" type="model" />

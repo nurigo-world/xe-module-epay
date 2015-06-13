@@ -6,6 +6,23 @@
         <p>{$XE_VALIDATOR_MESSAGE}</p>
 </div>
 
+<form id="searchForm" action="./" method="get" class="x_input-append">
+	<input type="hidden" name="module" value="{$module}" />
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="act" value="{$act}" />
+	<input type="hidden" name="status" value="{$status}" />
+	<input type="hidden" name="error_return_url" value="" />
+	<select name="search_key">
+		<option value="user_id" selected="selected"|cond="$search_key=='user_id'">{$lang->user_id}</option>
+		<option value="email_address" selected="selected"|cond="$search_key=='email_address'">{$lang->email_address}</option>
+		<option value="nick_name" selected="selected"|cond="$search_key=='nick_name'">{$lang->nick_name}</option>
+		<option value="user_name" selected="selected"|cond="$search_key=='user_name'">{$lang->user_name}</option>
+		<option value="transaction_srl" selected="selected"|cond="$search_key=='transaction_srl'">{$lang->transaction_srl}</option>
+	</select>
+	<input type="text" name="search_value" value="{$search_value}" />
+	<button type="submit" class="x_btn x_btn-inverse">{$lang->cmd_find}</button> 
+</form>
+
 <div class="table even easyList">
 	<table>
 		<thead>
@@ -100,12 +117,14 @@ jQuery(document).ready(function() {
 		{
 			var transaction_srl = jQuery(this).attr("data-transaction_srl");
 			var state = jQuery(this).find("option:selected").val();
+			var mid = '{$mid}';
 
 			var params = new Array();
 			params['transaction_srl'] = transaction_srl;
 			params['state'] = state;
+			params['mid'] = mid;
 
-			exec_xml('epay', 'procEpayUpdateState', params, function(){
+			exec_xml('epay', 'procEpayAdminUpdateState', params, function(){
 				alert(xe.lang.success_changed);
 			});
 		}

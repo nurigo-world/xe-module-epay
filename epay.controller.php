@@ -693,22 +693,6 @@ class epayController extends epay
 	}
 
 	/**
-	 * @brief update the state of payments
-	 */
-	function procEpayUpdateState()
-	{
-		if(!Context::get('transaction_srl') || !Context::get('state')) return;
-		else
-		{
-			$args->transaction_srl = Context::get('transaction_srl');
-			$args->state = Context::get('state');
-
-			$output = executeQuery('epay.updateTransaction', $args);
-			if(!$output->toBool()) return $output;
-		}
-	}
-
-	/**
 	 * @brief update extra vars
 	 */
 	function updateExtraVars($transaction_srl, $extra_vars)

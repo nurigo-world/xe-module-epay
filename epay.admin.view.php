@@ -193,8 +193,22 @@ class epayAdminView extends epay
 	 */
 	function dispEpayAdminTransactions()
 	{
+		$classfile = _XE_PATH_.'modules/cympusadmin/cympusadmin.class.php';
+		if(file_exists($classfile))
+		{
+				require_once($classfile);
+				$output = cympusadmin::init();
+				if(!$output->toBool()) return $output;
+		}
+
 		// transactions
 		$args->page = Context::get('page');
+		if(Context::get('search_key'))
+		{
+			$search_key = Context::get('search_key');
+			$search_value = Context::get('search_value');
+			$args->{$search_key} = $search_value;
+		}
 		$output = executeQueryArray('epay.getTransactionList',$args);
 		if(!$output->toBool()) return $output;
 		$list = $output->data;
@@ -241,6 +255,19 @@ class epayAdminView extends epay
 		$skin_content = $oModuleAdminModel->getModuleMobileSkinHTML($this->module_info->module_srl);
 		Context::set('skin_content', $skin_content);
 		$this->setTemplateFile('skininfo');
+	}
+
+	/**
+	 * @brief display the grant information
+	 **/
+	function dispEpayAdminGrantInfo()
+	{
+		// get the grant infotmation from admin module
+		$oModuleAdminModel = getAdminModel('module');
+		$grant_content = $oModuleAdminModel->getModuleGrantHTML($this->module_info->module_srl, $this->xml_info->grant);
+		Context::set('grant_content', $grant_content);
+
+		$this->setTemplateFile('grant_list');
 	}
 }
 /* End of file epay.admin.view.php */

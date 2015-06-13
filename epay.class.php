@@ -56,6 +56,10 @@ class epay extends ModuleObject
 		// 2013-07-28 regdate index added.
 		if (!$oDB->isIndexExists('epay_transactions', 'idx_member_srl')) return true;
 
+		// added on 2015/6/13
+		if (!$oModuleModel->getTrigger('cympusadmin.getManagerMenu', 'epay', 'model', 'triggerGetManagerMenu', 'before')) return true;
+
+
 		return false;
 	}
 
@@ -64,6 +68,8 @@ class epay extends ModuleObject
 	 */
 	function moduleUpdate() 
 	{
+		$oModuleController = &getController('module');    
+		$oModuleModel = &getModel('module');
 		$oDB = &DB::getInstance();	
 
 		if (!$oDB->isColumnExists('epay_transactions','target_module')) 
@@ -88,6 +94,12 @@ class epay extends ModuleObject
 		{
 			$oDB->addIndex('epay_transactions', 'idx_member_srl', 'p_member_srl');
 		}
+
+		// added on 2015/06/13
+		if (!$oModuleModel->getTrigger('cympusadmin.getManagerMenu', 'epay', 'model', 'triggerGetManagerMenu', 'before')) {
+			$oModuleController->insertTrigger('cympusadmin.getManagerMenu', 'epay', 'model', 'triggerGetManagerMenu', 'before');
+		}
+
 
 		return new Object(0, 'success_updated');
 	}

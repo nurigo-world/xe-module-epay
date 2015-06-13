@@ -264,6 +264,19 @@
 		<value xml:lang="jp"><![CDATA[Payment method]]></value>
 		<value xml:lang="zh-TW"><![CDATA[付款]]></value>
 	</item>
+	<item name="payment_management">
+		<value xml:lang="ko"><![CDATA[결제관리]]></value>
+		<value xml:lang="en"><![CDATA[Payment]]></value>
+		<value xml:lang="jp"><![CDATA[決済管理]]></value>
+		<value xml:lang="zh-TW"><![CDATA[付款結算管理]]></value>
+	</item>
+	<item name="transaction_srl">
+		<value xml:lang="ko"><![CDATA[거래번호]]></value>
+		<value xml:lang="en"><![CDATA[Transaction ID]]></value>
+		<value xml:lang="jp"><![CDATA[Transaction ID]]></value>
+		<value xml:lang="zh-TW"><![CDATA[Transaction ID]]></value>
+	</item>
+
 	<item name="cmd_place_order">
 		<value xml:lang="ko"><![CDATA[구매하기]]></value>
 		<value xml:lang="en"><![CDATA[Place an order]]></value>

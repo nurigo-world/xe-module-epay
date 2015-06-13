@@ -406,6 +406,33 @@ class epayModel extends epay
 		}
 		return $payment_method;
 	}
+
+	function triggerGetManagerMenu(&$manager_menu)
+	{
+		$oModuleModel = &getModel('module');
+
+		$logged_info = Context::get('logged_info');
+
+		$output = executeQueryArray('epay.getModInstList');
+		if(!$output->toBool()) return $output;
+
+		$list = $output->data;
+
+		foreach($list as $key => $val)
+		{
+			$grant = $oModuleModel->getGrant($val, $logged_info);
+			if($grant->manager) 
+			{
+				$submenu1 = new stdClass();
+				$submenu1->action = array('dispEpayAdminTransactions');
+				$submenu1->mid = $val->mid;
+				$submenu1->title = Context::getLang('payment_management');
+				$submenu1->module = 'epay';
+				$manager_menu['cympusadmin']->submenu[] = $submenu1;
+			}
+		}
+
+	}
 }
 /* End of file epay.model.php */
 /* Location: ./modules/epay/epay.model.php */

@@ -185,6 +185,22 @@ class epayAdminController extends epay
 			return;
 		}
 	}
+
+	/**
+	 * @brief update the state of payments
+	 */
+	function procEpayAdminUpdateState()
+	{
+		if(!Context::get('transaction_srl') || !Context::get('state')) return;
+		else
+		{
+			$args->transaction_srl = Context::get('transaction_srl');
+			$args->state = Context::get('state');
+
+			$output = executeQuery('epay.updateTransaction', $args);
+			if(!$output->toBool()) return $output;
+		}
+	}
 }
 /* End of file epay.admin.controller.php */
 /* Location: ./modules/epay/epay.admin.controller.php */
