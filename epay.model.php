@@ -242,6 +242,19 @@ class epayModel extends epay
 		return $count;
 	}
 
+	/**
+	 * @brief get transaction list by member_srl
+	 */
+	function getTransactionList($member_srl)
+	{
+		$args->member_srl = $member_srl;
+		$args->page = 1;
+
+		$output = executeQueryArray('epay.getTransactionByMemberSrl', $args);
+		if(!$output->toBool()) return array();
+		return $output->data;
+	}
+
 	function getPluginByName($plugin_name)
 	{
 		if (!$plugin_name) return;
